@@ -1,682 +1,174 @@
-<script lang="ts">
-    /**
-     * Handles newsletter form submission with visual feedback
-     * @param {SubmitEvent} event - The form submission event
-     */
-    function handleSubmit(event: SubmitEvent): void {
-      event.preventDefault();
-      
-      const form = event.target as HTMLFormElement;
-      const input = form.querySelector('input[type="email"]') as HTMLInputElement;
-      const button = form.querySelector('button') as HTMLButtonElement;
-      
-      if (!input || !button) return;
-      
-      // Log submission (replace with actual API call in production)
-      console.log('Newsletter subscription:', input.value);
-      
-      // Store original button state
-      const originalText = button.innerHTML;
-      
-      // Update button with success state
-      button.innerHTML = '<span class="check-icon">✓</span> Thanks!';
-      button.querySelector('.check-icon')?.classList.add('check-icon');
-      button.classList.add('newsletter-container', 'success');
-      
-      // Reset form after delay
-      setTimeout(() => {
-        button.innerHTML = originalText;
-        button.classList.remove('success');
-        input.value = '';
-      }, 2000);
-    }
+<!-- Footer.svelte -->
+<script>
+    // No JS needed unless adding dynamic logic
   </script>
   
-  <div class="footer-container">
-    <footer class="modern-footer">
-      <div class="footer-content">
-        <!-- Brand Column -->
-        <div class="brand-column">
-          <div class="footer-logo">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M20 0C8.95 0 0 8.95 0 20C0 31.05 8.95 40 20 40C31.05 40 40 31.05 40 20C40 8.95 31.05 0 20 0ZM20 30C14.48 30 10 25.52 10 20C10 14.48 14.48 10 20 10C25.52 10 30 14.48 30 20C30 25.52 25.52 30 20 30Z" fill="url(#paint0_linear)"/>
-              <defs>
-                <linearGradient id="paint0_linear" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#00D4FF"/>
-                  <stop offset="1" stop-color="#00A3FF"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <span>Horizon</span>
-          </div>
-          <p class="brand-desc">Empowering digital experiences through innovative design and cutting-edge technology solutions.</p>
-          <div class="social-links">
-            <!-- Social Media Icons -->
-            <a href="https://twitter.com" aria-label="Twitter">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M18 4H22L14 21H10L18 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2 4H6L14 21H10L2 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="https://facebook.com" aria-label="Facebook">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="https://instagram.com" aria-label="Instagram">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16 11.3701C16.1234 12.2023 15.9813 13.0523 15.5938 13.7991C15.2063 14.5459 14.5932 15.1515 13.8416 15.5297C13.0901 15.908 12.2385 16.0397 11.4078 15.906C10.5771 15.7723 9.80976 15.3801 9.21484 14.7852C8.61992 14.1903 8.22773 13.4229 8.09407 12.5923C7.9604 11.7616 8.09207 10.91 8.47033 10.1584C8.84859 9.40691 9.45419 8.79385 10.201 8.40637C10.9478 8.01889 11.7978 7.87665 12.63 8.00006C13.4789 8.12594 14.2649 8.52152 14.8717 9.12836C15.4785 9.73521 15.8741 10.5211 16 11.3701Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M17.5 6.5H17.51" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="https://github.com" aria-label="GitHub">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M16 22V18.13C16.0375 17.6532 15.9731 17.1738 15.811 16.7238C15.6489 16.2738 15.3929 15.8634 15.06 15.52C18.2 15.17 21.5 13.98 21.5 8.52C21.4997 7.12383 20.9627 5.7812 20 4.77C20.4559 3.54851 20.4236 2.19835 19.91 0.999999C19.91 0.999999 18.73 0.649999 16 2.48C13.708 1.85882 11.292 1.85882 9 2.48C6.27 0.649999 5.09 0.999999 5.09 0.999999C4.57638 2.19835 4.54414 3.54851 5 4.77C4.03013 5.7887 3.49252 7.14346 3.5 8.55C3.5 13.97 6.8 15.16 9.94 15.55C9.611 15.89 9.35726 16.2954 9.19531 16.7399C9.03335 17.1844 8.96681 17.6581 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M9 18C4.49 20 4 16 2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-        </div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <!-- Logo Section -->
+      <div class="footer-brand">
+        <span class="logo-icon">⬢</span>
+        <span class="logo-text">Svelte UI</span>
+      </div>
   
-        <!-- Main Content Grid -->
-        <div class="footer-grid">
-          <!-- Link Columns -->
-          <div class="footer-links">
-            <div class="footer-section">
-              <h3>Services</h3>
-              <ul>
-                <li><a href="/branding">Branding</a></li>
-                <li><a href="/design">Design</a></li>
-                <li><a href="/marketing">Marketing</a></li>
-                <li><a href="/advertisement">Advertisement</a></li>
-                <li><a href="/development">Development</a></li>
-              </ul>
-            </div>
-            <div class="footer-section">
-              <h3>Company</h3>
-              <ul>
-                <li><a href="/about">About us</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/jobs">Careers</a></li>
-                <li><a href="/press">Press</a></li>
-                <li><a href="/blog">Blog</a></li>
-              </ul>
-            </div>
-            <div class="footer-section">
-              <h3>Resources</h3>
-              <ul>
-                <li><a href="/help">Help Center</a></li>
-                <li><a href="/partners">Partners</a></li>
-                <li><a href="/resources">Resources</a></li>
-                <li><a href="/newsletter">Newsletter</a></li>
-              </ul>
-            </div>
-          </div>
+      <!-- Navigation Links -->
+      <nav class="footer-nav">
+        <a href="/">Components</a>
+        <a href="/sponsor-us">Sponsor Us</a>
+      </nav>
   
-          <!-- Newsletter Section -->
-          <div class="newsletter-container">
-            <h3>Join Our Newsletter</h3>
-            <p>Get exclusive updates, industry insights, and special offers delivered straight to your inbox.</p>
-            <form on:submit={handleSubmit}>
-              <div class="input-group">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  required 
-                  aria-label="Email for newsletter"
-                />
-                <button type="submit">Subscribe</button>
-              </div>
-              <label class="consent-checkbox">
-                <input type="checkbox" required>
-                <span class="checkmark"></span>
-                <span>I agree to receive emails and accept the <a href="/privacy">Privacy Policy</a></span>
-              </label>
-            </form>
-          </div>
-        </div>
+      <!-- Social Icons -->
+      <div class="footer-socials">
+        <a href="/" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.286C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+          </svg>
+        </a>
+        <a href="/" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+          </svg>
+        </a>
+        <a href="/" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913a5.885 5.885 0 0 0 1.384 2.126A5.868 5.868 0 0 0 4.14 23.37c.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558a5.898 5.898 0 0 0 2.126-1.384 5.86 5.86 0 0 0 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913a5.89 5.89 0 0 0-1.384-2.126A5.847 5.847 0 0 0 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227a3.81 3.81 0 0 1-.899 1.382 3.744 3.744 0 0 1-1.38.896c-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421a3.716 3.716 0 0 1-1.379-.899 3.644 3.644 0 0 1-.9-1.38c-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 1 0 0-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 0 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+          </svg>
+        </a>
+        <a href="/" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
       </div>
   
       <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <div class="legal-links">
-          <a href="/terms">Terms</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/cookies">Cookies</a>
-          <a href="/legal">Legal</a>
-        </div>
-        <p class="copyright">&copy; 2025 Horizon Inc. All rights reserved.</p>
+      <div class="footer-copy">
+        &copy; 2025 Svelte UI. All rights reserved.
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
   
   <style>
-    /**
-     * CSS Variables
-     * Centralized configuration for easy theming and maintenance
-     */
-    :root {
-      /* Core brand colors */
-      --brand-primary: #00d4ff;
-      --brand-secondary: #00a3ff;
-      --brand-gradient: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
-      
-      /* Foundational colors */
-      --color-white: #ffffff;
-      --color-black: #000000;
-      --color-text-primary: #2d3748;
-      --color-text-secondary: #4a5568;
-      --color-text-muted: #718096;
-      
-      /* UI component colors */
-      --color-border: #e2e8f0;
-      --color-border-hover: #cbd5e0;
-      --color-bg-subtle: #f7fafc;
-      --color-bg-hover: #edf2f7;
-      --color-bg-active: #e2e8f0;
-      --color-success: #10b981;
-      
-      /* Effects */
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-focus: 0 0 0 3px rgba(0, 212, 255, 0.4);
-      
-      /* Typography */
-      --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      --font-weight-normal: 400;
-      --font-weight-medium: 500;
-      --font-weight-bold: 600;
-      --font-weight-extrabold: 700;
-      
-      /* Layout */
-      --spacing-xs: 0.5rem;   /* 8px */
-      --spacing-sm: 0.75rem;  /* 12px */
-      --spacing-md: 1rem;     /* 16px */
-      --spacing-lg: 1.5rem;   /* 24px */
-      --spacing-xl: 2rem;     /* 32px */
-      --spacing-2xl: 2.5rem;  /* 40px */
-      --spacing-3xl: 3rem;    /* 48px */
-      --spacing-4xl: 4rem;    /* 64px */
-      
-      /* Border radius */
-      --radius-sm: 0.25rem;   /* 4px */
-      --radius-md: 0.5rem;    /* 8px */
-      --radius-lg: 0.75rem;   /* 12px */
-      --radius-full: 9999px;
-      
-      /* Transitions */
-      --transition-fast: 150ms ease;
-      --transition-normal: 250ms ease;
-      --transition-slow: 350ms ease;
-      
-      /* Z-index layers */
-      --z-base: 1;
-      --z-above: 10;
-      --z-modal: 100;
-      --z-toast: 1000;
+    .footer {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      padding: 4rem 1rem;
+      font-family: 'Inter', system-ui, sans-serif;
     }
   
-    /**
-     * Global styles for the footer component
-     */
-    .footer-container {
-      position: relative;
-      background-color: var(--color-white); /* Pure white background */
-      padding: var(--spacing-4xl) var(--spacing-xl) var(--spacing-2xl);
-      overflow: hidden;
-      font-family: var(--font-family);
-      color: var(--color-text-primary);
-    }
-  
-    /**
-     * Main footer layout with added depth
-     */
-    .modern-footer {
-      position: relative;
-      z-index: var(--z-base);
-      max-width: 1400px;
-      margin: 0 auto;
-      min-height: 650px; /* Set minimum height */
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--color-border);
-      padding: var(--spacing-3xl) var(--spacing-2xl) var(--spacing-xl);
-    }
-  
-    /**
-     * Content wrapper for better structure
-     */
-    .footer-content {
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
       display: grid;
-      grid-template-columns: 1fr 3fr;
-      gap: var(--spacing-4xl);
-      margin-bottom: var(--spacing-3xl);
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
     }
   
-    /**
-     * Logo styling and branding column
-     */
-    .brand-column {
+    .footer-brand {
       display: flex;
-      flex-direction: column;
-      gap: var(--spacing-xl);
-    }
-  
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      font-size: 1.5rem;
-      font-weight: var(--font-weight-extrabold);
-      color: var(--color-text-primary);
-      margin-bottom: var(--spacing-md);
-    }
-  
-    .brand-desc {
-      color: var(--color-text-secondary);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-  
-    /**
-     * Social links styling
-     */
-    .social-links {
-      display: flex;
-      gap: var(--spacing-md);
-      margin-top: var(--spacing-md);
-    }
-  
-    .social-links a {
-      display: flex;
-      align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-full);
-      background-color: var(--color-bg-subtle);
-      color: var(--color-text-muted);
-      transition: all var(--transition-fast);
-      border: 1px solid var(--color-border);
+      align-items: center;
+      gap: 0.75rem;
     }
   
-    .social-links a:hover {
-      color: var(--brand-primary);
-      background-color: var(--color-bg-hover);
-      border-color: var(--color-border-hover);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
+    .logo-icon {
+      font-size: 2rem;
+      color: #ff6b35;
     }
   
-    /**
-     * Main grid layout
-     */
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: var(--spacing-3xl);
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
     }
   
-    /**
-     * Link sections
-     */
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-2xl);
-    }
-  
-    .footer-section h3 {
-      margin-top: 0;
-      margin-bottom: var(--spacing-lg);
-      font-size: 1.15rem;
-      font-weight: var(--font-weight-bold);
-      color: var(--color-text-primary);
-      position: relative;
-      padding-bottom: var(--spacing-sm);
-    }
-  
-    .footer-section h3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 32px;
-      height: 3px;
-      background: var(--brand-gradient);
-      border-radius: 2px;
-    }
-  
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .footer-section li {
-      margin: var(--spacing-md) 0;
-    }
-  
-    .footer-section a {
-      color: var(--color-text-secondary);
-      text-decoration: none;
-      position: relative;
-      transition: all var(--transition-fast);
-      font-size: 1rem;
-      display: inline-block;
-    }
-  
-    .footer-section a:hover {
-      color: var(--brand-primary);
-      transform: translateX(5px);
-    }
-  
-    /**
-     * Newsletter section
-     */
-    .newsletter-container {
-      background-color: var(--color-bg-subtle);
-      padding: var(--spacing-xl);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-border);
-    }
-  
-    .newsletter-container h3 {
-      margin-top: 0;
-      margin-bottom: var(--spacing-md);
-      font-size: 1.25rem;
-      font-weight: var(--font-weight-bold);
-      color: var(--color-text-primary);
-    }
-  
-    .newsletter-container p {
-      font-size: 1rem;
-      color: var(--color-text-secondary);
-      margin-bottom: var(--spacing-lg);
-      line-height: 1.6;
-    }
-  
-    /**
-     * Form styling
-     */
-    .input-group {
+    .footer-nav {
       display: flex;
-      margin-bottom: var(--spacing-md);
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+  
+    .footer-nav a {
+      color: #b0b0b0;
+      text-decoration: none;
+      font-weight: 500;
       position: relative;
+      transition: color 0.3s;
+    }
+  
+    .footer-nav a::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 0;
+      left: 50%;
+      bottom: -4px;
+      background: #ff6b35;
+      transition: width 0.3s ease, left 0.3s ease;
+      transform: translateX(-50%);
+    }
+  
+    .footer-nav a:hover {
+      color: #ff6b35;
+    }
+  
+    .footer-nav a:hover::after {
       width: 100%;
     }
   
-    .newsletter-container input[type="email"] {
-      flex: 1;
-      padding: var(--spacing-md) var(--spacing-lg);
-      border-radius: var(--radius-md) 0 0 var(--radius-md);
-      border: 1px solid var(--color-border);
-      background-color: var(--color-white);
-      color: var(--color-text-primary);
-      font-size: 1rem;
-      transition: all var(--transition-fast);
-    }
-  
-    .newsletter-container input[type="email"]::placeholder {
-      color: var(--color-text-muted);
-    }
-  
-    .newsletter-container input[type="email"]:focus {
-      outline: none;
-      border-color: var(--brand-primary);
-      box-shadow: var(--shadow-focus);
-    }
-  
-    .newsletter-container button {
-      padding: var(--spacing-md) var(--spacing-xl);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      border: none;
-      background: var(--brand-gradient);
-      color: var(--color-white);
-      font-weight: var(--font-weight-bold);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      font-size: 1rem;
-      white-space: nowrap;
-    }
-  
-    .newsletter-container button:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
-  
-    .newsletter-container button.success {
-      background: var(--color-success);
-    }
-  
-    .check-icon {
-      display: inline-block;
-      margin-right: var(--spacing-xs);
-      animation: scaleUp 0.3s ease;
-    }
-  
-    @keyframes scaleUp {
-      0% { transform: scale(0); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-  
-    /**
-     * Checkbox styling
-     */
-    .consent-checkbox {
+    .footer-socials {
       display: flex;
-      align-items: flex-start;
-      gap: var(--spacing-sm);
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      cursor: pointer;
-      position: relative;
-      padding-left: var(--spacing-xl);
-      user-select: none;
-      margin-top: var(--spacing-sm);
+      justify-content: center;
+      gap: 1.5rem;
     }
   
-    .consent-checkbox input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
+    .footer-socials a {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #b0b0b0;
+      transition: all 0.3s ease;
     }
   
-    .checkmark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 18px;
-      width: 18px;
-      background-color: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      transition: all var(--transition-fast);
+    .footer-socials a:hover {
+      background: #ff6b35;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
     }
   
-    .consent-checkbox:hover input ~ .checkmark {
-      background-color: var(--color-bg-hover);
+    .footer-copy {
+      font-size: 0.875rem;
+      color: #777;
+      margin-top: 1rem;
     }
   
-    .consent-checkbox input:checked ~ .checkmark {
-      background-color: var(--brand-primary);
-      border-color: var(--brand-primary);
-    }
-  
-    .checkmark:after {
-      content: "";
-      position: absolute;
-      display: none;
-    }
-  
-    .consent-checkbox input:checked ~ .checkmark:after {
-      display: block;
-    }
-  
-    .consent-checkbox .checkmark:after {
-      left: 6px;
-      top: 2px;
-      width: 5px;
-      height: 10px;
-      border: solid var(--color-white);
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
-    }
-  
-    .consent-checkbox a {
-      color: var(--brand-primary);
-      text-decoration: none;
-      transition: all var(--transition-fast);
-    }
-  
-    .consent-checkbox a:hover {
-      text-decoration: underline;
-    }
-  
-    /**
-     * Footer bottom section
-     */
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: var(--spacing-xl);
-      border-top: 1px solid var(--color-border);
-      margin-top: var(--spacing-xl);
-    }
-  
-    .legal-links {
-      display: flex;
-      gap: var(--spacing-xl);
-    }
-  
-    .legal-links a {
-      color: var(--color-text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color var(--transition-fast);
-    }
-  
-    .legal-links a:hover {
-      color: var(--brand-primary);
-    }
-  
-    .copyright {
-      color: var(--color-text-muted);
-      font-size: 0.9rem;
-      margin: 0;
-    }
-  
-    /**
-     * Responsive breakpoints
-     * Organized from largest to smallest for better maintenance
-     */
-    @media (max-width: 1200px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
-      }
-      
-      .brand-column {
-        max-width: 600px;
-      }
-  
-      .modern-footer {
-        min-height: 800px;
-      }
-    }
-  
-    @media (max-width: 992px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
-      }
-      
-      .newsletter-container {
-        max-width: 650px;
-      }
-  
-      .modern-footer {
-        min-height: 850px;
-      }
-    }
-  
-    @media (max-width: 768px) {
-      .footer-container {
-        padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-xl);
-      }
-      
-      .modern-footer {
-        padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
-        min-height: 900px;
-      }
-      
-      .footer-links {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-xl);
-      }
-      
-      .footer-bottom {
-        flex-direction: column-reverse;
-        gap: var(--spacing-lg);
-        align-items: flex-start;
-      }
-      
-      .legal-links {
-        flex-wrap: wrap;
-        gap: var(--spacing-lg);
-      }
-    }
-  
-    @media (max-width: 576px) {
-      .footer-links {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-      
-      .input-group {
-        flex-direction: column;
-        gap: var(--spacing-md);
-      }
-      
-      .newsletter-container input[type="email"] {
-        border-radius: var(--radius-md);
-      }
-      
-      .newsletter-container button {
-        border-radius: var(--radius-md);
-        width: 100%;
-      }
-      
-      .footer-bottom {
-        text-align: center;
+    @media (min-width: 768px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: left;
         align-items: center;
       }
-      
-      .legal-links {
-        justify-content: center;
-        width: 100%;
-      }
-      
-      .social-links {
-        justify-content: center;
+  
+      .footer-brand {
+        justify-content: flex-start;
       }
   
-      .modern-footer {
-        min-height: 1000px;
+      .footer-socials {
+        justify-content: flex-end;
+      }
+  
+      .footer-copy {
+        grid-column: span 3;
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
     }
   </style>
